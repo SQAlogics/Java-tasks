@@ -1,0 +1,45 @@
+Write a program that reads a list of integers from input and determines if the list is a palindrome (values are identical from first to last and last to first). The input begins with an integer indicating the length of the list that follows. Assume that the list will always contain fewer than 20 integers. Output "yes" if the list is a palindrome and "no" otherwise. The output ends with a newline.
+
+Ex: If the input is:
+
+6 
+1 5 9 9 5 1
+the output is:
+yes
+
+
+import java.util.Scanner;
+
+public class LabProgram {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+
+        // Get the length of the list
+        int length = scnr.nextInt();
+
+        // Read integers into an array
+        int[] userValues = new int[length];
+        for (int i = 0; i < length; i++) {
+            userValues[i] = scnr.nextInt();
+        }
+
+        // Check if the list is a palindrome
+        boolean isPalindrome = true;
+        for (int i = 0, j = length - 1; i < j; i++, j--) {
+            if (userValues[i] != userValues[j]) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Output "yes" or "no" accordingly
+        if (isPalindrome) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+
+        scnr.close();
+    }
+}
+
