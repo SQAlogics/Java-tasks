@@ -1,0 +1,48 @@
+Write a program that reads a list of integers, and outputs the two smallest integers in the list, in ascending order. The input begins with an integer indicating the number of integers that follow. You can assume that the list will have at least 2 integers and fewer than 20 integers.
+
+Ex: If the input is:
+
+5
+10 5 3 21 2
+the output is:
+
+2 and 3
+To achieve the above, first read the integers into an array.
+
+Hint: Make sure to initialize the second smallest and smallest integers properly.
+
+import java.util.Scanner;
+
+public class LabProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Get the number of integers
+        int numIntegers = sc.nextInt();
+
+        // Read integers into an array
+        int[] integers = new int[numIntegers];
+        for (int i = 0; i < numIntegers; i++) {
+            integers[i] = sc.nextInt();
+        }
+
+        // Initialize the smallest and second smallest integers
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+
+        // Find the two smallest integers
+        for (int num : integers) {
+            if (num < smallest) {
+                secondSmallest = smallest;
+                smallest = num;
+            } else if (num < secondSmallest) {
+                secondSmallest = num;
+            }
+        }
+
+        // Output the two smallest integers
+        System.out.println(smallest + " and " + secondSmallest);
+
+        sc.close();
+    }
+}
